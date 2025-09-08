@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Forms Stress Ghana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: green;
+    }
+
+    header {
+      background: blue;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background: purple;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* ✅ allow wrapping on small screens */
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 5px 15px;
+    }
+    nav a:hover {
+      color: #d400ff;
+    }
+
+    .container {
+      display: flex;
+      margin: 20px;
+      gap: 20px;
+      flex-wrap: wrap; /* ✅ stack on smaller screens */
+      color: blue;
+    }
+
+    .products {
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px gray;
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+    }
+    .product button {
+      background: orange;
+      color: blue;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .product button:hover {
+      background: #e03e00;
+      color: white;
+    }
+
+    .cart {
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px gray;
+      max-height: 400px;
+      overflow-y: auto;
+      min-width: 250px;
+    }
+    .cart h3 {
+      text-align: center;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px;
+    }
+    .search-container input {
+      width: 90%;
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      margin-top: 10px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+    .whatsapp-btn:hover {
+      background: #1ebe5d;
+    }
+    .whatsapp-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    footer {
+      background: #2d2d2d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    /* ✅ Mobile adjustments */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .products {
+        grid-template-columns: 1fr;
+      }
+      .cart {
+        max-width: 100%;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>No Forms Stress Ghana</h1>
+    <p>Uni ko ayɛ fɔ – Going to school is now easy</p>
+  </header>
+
+  <!-- 🔎 Search Bar -->
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search for a university...">
+  </div>
+
+  <div class="container">
+    <!-- Products -->
+    <div class="products" id="product-list">
+      <div class="product">
+        <img src="knust.png" alt="KNUST">
+        <h3>Kwame Nkrumah University of Science and Technology</h3>
+        <p>Price: GHS 280</p>
+        <button onclick="addToCart('KNUST', 280)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="umat.png" alt="UMaT">
+        <h3>University of Mines and Technology, Tarkwa</h3>
+        <p>Price: GHS 270</p>
+        <button onclick="addToCart('UMaT', 270)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="legon.jpg" alt="UG">
+        <h3>University of Ghana</h3>
+        <p>Price: GHS 280</p>
+        <button onclick="addToCart('UG', 280)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="ucc.png" alt="UCC">
+        <h3>University of Cape Coast</h3>
+        <p>Price: GHS 280</p>
+        <button onclick="addToCart('UCC', 280)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="uenr.jpeg" alt="UENR">
+        <h3>University of Energy and Natural Resources</h3>
+        <p>Price: GHS 280</p>
+        <button onclick="addToCart('UENR', 280)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="upsa.jpeg" alt="UPSA">
+        <h3>University of Professional Studies, Accra</h3>
+        <p>Price: GHS 280</p>
+        <button onclick="addToCart('UPSA', 280)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart" id="cart">
+      <h3>Shopping Cart</h3>
+      <div id="cart-items"></div>
+      <hr>
+      <p><strong>Total: GHS <span id="cart-total">0</span></strong></p>
+      <button class="whatsapp-btn" onclick="checkout()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        Checkout via WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(product, price) {
+      cart.push({product, price});
+      total += price;
+      displayCart();
+    }
+
+    function displayCart() {
+      const cartItemsDiv = document.getElementById("cart-items");
+      cartItemsDiv.innerHTML = "";
+      cart.forEach(item => {
+        cartItemsDiv.innerHTML += `<div class="cart-item"><span>${item.product}</span> <span>GHS ${item.price}</span></div>`;
+      });
+      document.getElementById("cart-total").textContent = total;
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      let message = "Hello, I want to purchase the following forms:%0A%0A";
+      cart.forEach(item => {
+        message += `- ${item.product}: GHS ${item.price}%0A`;
+      });
+      message += `%0ATotal: GHS ${total}%0A%0APlease send me payment details.`;
+
+      let whatsappNumber = "233532719501"; 
+      let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(url, "_blank");
+    }
+
+    // 🔎 Search filter
+    document.getElementById("search").addEventListener("keyup", function() {
+      let query = this.value.toLowerCase();
+      let products = document.querySelectorAll(".product");
+
+      products.forEach(product => {
+        let name = product.querySelector("h3").textContent.toLowerCase();
+        if (name.includes(query)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 No Forms Stress Ghana | Contact: +233 532 719 501</p>
+  </footer>
+</body>
+</html>
